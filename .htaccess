@@ -1,0 +1,16 @@
+Options +FollowSymLinks
+RewriteEngine on
+RewriteRule ^view/$ view.php [NC,L]
+
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\\ /view\\.php [NC]
+RewriteRule ^view.php$ /view/ [L,R=301]
+
+RewriteRule ^view/view.php$ /view/
+
+<IfModule mod_rewrite.c>
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
